@@ -1,0 +1,303 @@
+DeskTopSize 2x2
+
+AddToFunc InitFunction
++ I Exec [ -f $HOME/.xinitrc-fvwm ] && sh $HOME/.xinitrc-fvwm
++ I Restart
+ImagePath +:$HOME/pics/backgrounds/icons/
+ImagePath +:$HOME/.fvwm/icons
+ImagePath +:$HOME/.fvwm/decor
+
+# MENUS ###########################################
+AddToMenu StartMenu
+
++ "%scalable2/emblems/emblem-photos.svg:60x60%Explorer" Exec exec explorer
+#+ "%googleearth.svg:60x60%Earth" Exec exec google-earth
++ "%googleearth.svg:60x60%VirtualBox" Exec exec nohup VirtualBox  &> /dev/null
++ "%scalable/apps/terminal.svg:60x60%Terminal" Exec exec aterm
++ "%scalable/apps/terminal.svg:60x60%Rox" Exec exec rox
++ "%scalable/apps/gnome-cd.svg:60x60%KPlay" Exec exec kplay_gui
++ "%scalable/apps/emacs.svg:60x60%Emacs" Exec exec emacs
++ "%scalable/stock/net/stock_internet.svg:60x60%Net" Popup NetMenu
++ "%scalable/devices/keyboard.svg:60x60%Keyboard" Popup Keyboard
++ "%scalable/actions/align-horizon.svg:60x60%Background" Exec exec ~/progs/background_gui/background_gui.py
++ "" Nop
++ "System" Popup SystemMenu
+
+AddToMenu NetMenu
++ "%pidgin.svg:60x60%pidgin"			Exec exec pidgin
++ "%scalable/apps/xchat.svg:60x60%xchat"			Exec exec xchat
++ "%chrome.svg:60x60%Chrome" Exec exec chromium
++ "%firefox.svg:60x60%Firefox" Exec exec firefox
+
+AddToMenu Keyboard
++ "US-standard"			Exec exec setxkbmap us
++ "Dvorak"			Exec exec setxkbmap dvorak
+
+AddToMenu SystemMenu
++ "Restart Window Manager"						Restart
++ "FVWM Console"	  Module FvwmConsole
++ "Identify Window" Pick Module FvwmIdent
+###################################################
+
+
+# BINDINGS ########################################
+Mouse 1 R A Menu StartMenu
+Mouse 3	R N	StrokeFunc FeedBack DrawMotion
+
+Mouse 1 A M Function Move-or-Raise
+Mouse 3 A M Resize
+Mouse 2 A M Close
+Mouse 1 T N Function Move-or-Raise
+Mouse 3 T N Menu WindowOps
+Silent Mouse 8 A N Move
+Silent Mouse 8 A M PlaceAgain
+Silent Mouse 9 A A Close
+Silent Mouse 9 A M Destroy
+
+
+Stroke	0		0	R 	N 	WindowList NoHotkeys, NoGeometryWithInfo, NoDeskNum, NoNumInDeskTitle, NoCurrentDeskTitle, IconifiedAtEnd
+Stroke  N258    0	R	N	Exec exec aterm
+Stroke	N14789	0   R   N   Exec exec xterm
+Stroke  N654    0   R   N   Exec exec explorer
+Stroke  N852    0   R   N   Exec exec chromium
+Stroke  N74123  0   R	N   Exec exec firefox
+Stroke  N456    0   R   N   Exec exec emacs
+Stroke  N12369  0   R   N   Exec exec gqview
+###################################################
+
+
+
+
+# WINDOWS STYLE WINDOW DECORATION #################
+BorderStyle -- HiddenHandles NoInset Raised
+DefaultFont "Shadow=1 se:xft:Bitsream Vera Serif:Bold:size=10"
+DestroyDecor KyleDecor
+AddToDecor KyleDecor
++ BorderStyle Colorset 3 -- NoInset HiddenHandles
++ TitleStyle LeftJustified Height 19
++ TitleStyle Active HGradient 1000 #0a246a #a6caf0
++ TitleStyle Inactive HGradient 1000 #808080 #c0c0c0
++ TitleStyle -- Flat
++ ButtonStyle 1 -- Flat
++ ButtonStyle 2 -- Flat
++ ButtonStyle 4 -- Flat
++ ButtonStyle 6 -- Flat
++ AddButtonStyle Left Inactive Solid #808080
++ AddButtonStyle Left Active Solid #0a246a
++ AddButtonStyle Right Active Solid #a6caf0
++ AddButtonStyle Right Inactive Solid #c0c0c0
++ AddButtonStyle 1 MiniIcon
++ AddButtonStyle 2 AllUp Pixmap c_b1.png
++ AddButtonStyle 2 AllDown Pixmap c_b1p.png
++ AddButtonStyle 4 AllUp Pixmap c_b2.png
++ AddButtonStyle 4 AllDown Pixmap c_b2p.png
++ AddButtonStyle 6 AllUp Pixmap c_b3.png
++ AddButtonStyle 6 AllDown Pixmap c_b3p.png
+Mouse 0 1 N Menu WindowOps Close
+Mouse 0 1 N Function IconClick
+Mouse 0 2 N Close
+Mouse 0 4 N Maximize
+Mouse 0 6 N Iconify
+###################################################
+BorderStyle -- HiddenHandles NoInset Raised
+DefaultFont "Shadow=1 se:xft:Bitsream Vera Serif:Bold:size=10"
+DestroyDecor Kyle2Decor
+AddToDecor Kyle2Decor
++ BorderStyle Colorset 3 -- NoInset HiddenHandles
++ TitleStyle LeftJustified Height 19
++ TitleStyle Active HGradient 1000 #0a246a #a6caf0
++ TitleStyle Inactive HGradient 1000 #808080 #c0c0c0
++ TitleStyle -- Flat
++ ButtonStyle 1 -- Flat
++ ButtonStyle 2 -- Flat
++ ButtonStyle 4 -- Flat
++ ButtonStyle 6 -- Flat
++ AddButtonStyle Left Inactive Solid #808080
++ AddButtonStyle Left Active Solid #0a246a
++ AddButtonStyle Right Active Solid #a6caf0
++ AddButtonStyle Right Inactive Solid #c0c0c0
++ AddButtonStyle 1 MiniIcon
++ AddButtonStyle 2 AllUp Pixmap c_b1.png
++ AddButtonStyle 2 AllDown Pixmap c_b1p.png
++ AddButtonStyle 4 AllUp Pixmap c_b2.png
++ AddButtonStyle 4 AllDown Pixmap c_b2p.png
++ AddButtonStyle 6 AllUp Pixmap c_b3.png
++ AddButtonStyle 6 AllDown Pixmap c_b3p.png
+Mouse 0 1 N Menu WindowOps Close
+Mouse 0 1 N Function IconClick
+Mouse 0 2 N Close
+Mouse 0 4 N Maximize
+Mouse 0 6 N Iconify
+AddToFunc IconClick
++ I Raise
++ I Menu WindowOps Close
+###################################################
+
+
+
+
+
+
+
+# TASKBAR MODULE ##################################
+#Module FvwmTaskBar
+Style FvwmTaskBar NoTitle,!Borders,Sticky,WindowListSkip,StaysOnTop
+#Style *Chromium* NoTitle, !Borders
+Style *chromium-browser* NoTitle, !Borders
+*FvwmTaskBar: Font "Shadow=0 se:xft:Bitsream Vera Serif:size=8"
+*FvwmTaskBar: UseSkipList
+*FvwmTaskBar: WindowButtonsRightMargin 0
+*FvwmTaskBar: StartCommand Popup StartMenu rectangle $widthx$height+$left+$top 0 -100m
+*FvwmTaskBar: StartName Commence
+*FvwmTaskBar: Action Click3 Popup WindowOps
+*FvwmTaskBar: ShowTips
+*FvwmTaskBar: Button Icon firefox_16x16.png, Action exec exec firefox
+#*FvwmTaskBar: Button Icon thunderbird_16x16.png, Action exec exec thunderbird
+*FvwmTaskBar: Button Icon rox_16x16.png, Action exec exec rox
+*FvwmTaskBar: ClockFormat %I:%M %P
+###################################################
+
+
+# PAGER MODULE ####################################
+#Module FvwmPager 0
+#*FvwmPager: Geometry 240x135+0-0 2x2
+#*FvwmPager: Geometry 360x135+0-0
+*FvwmPager: Geometry 500x135+0-0
+#*FvwmPager: DeskTopScale 16
+*FvwmPager: Font none
+*FvwmPager: Colorset * 55
+*FvwmPager: HilightColorset * 6
+*FvwmPager: WindowColorsets 5 5
+*FvwmPager: BalloonColorset * 8
+*FvwmPager: BalloonBorderWidth 0
+*FvwmPager: UseSkipList
+*FvwmPager: WindowBorderWidth 0
+*FvwmPager: Balloons Anything
+*FvwmPager: NoSeparators
+*FvwmPager: MiniIcons
+#*FvwmPager: IconGeometry 64x64
+*FvwmPager: Hilight SlateBlue
+Style FvwmPager StaysOnBottom
+Style FvwmPager NoTitle, NoHandles, Borderwidth 0, Sticky, WindowListSkip, ParentalRelativity, !Borders
+###################################################
+
+
+# VARIOUS SETTINGS ################################
+CleanupColorsets
+Colorset 0 fg black, bg #c3c3c3, Plain, NoShape
+Colorset 1 fg #d4d0c8, bg grey51, Plain, NoShape
+Colorset 2 fg white, bg Blue3, hi #40B0F0, sh navy, Plain, NoShape
+Colorset 3 fg white, bg #c3c3c3, Plain, NoShape
+Colorset 4 fg white, bg #c3c3c3, Plain, NoShape
+Colorset 5 fg white, bg black, Transparent
+Colorset 55 Transparent
+Colorset 6 fg white, bg black, RootTransparent, Tint blue 50
+Colorset 7 fg #000000, fgsh #bbbbbb, bg #ffffff, sh #ffffff, hi #ffffff, Translucent #ffffff 70
+Colorset 8 fg #ffffff, fgsh #000000, bg #101F36, sh #101F36, hi #101F36
+CursorStyle ROOT	left_ptr
+CursorStyle TITLE	left_ptr
+CursorStyle DEFAULT	left_ptr
+CursorStyle SYS		left_ptr
+CursorStyle MENU	left_ptr
+CursorStyle DESTROY	crosshair
+CursorStyle TOP_EDGE	left_ptr
+CursorStyle BOTTOM_EDGE	left_ptr
+CursorStyle LEFT_EDGE	left_ptr
+CursorStyle RIGHT_EDGE	left_ptr
+CursorStyle STROKE	left_ptr
+MenuStyle * HilightBack
+MenuStyle * MenuColorset 7
+MenuStyle * ActiveColorset 8
+MenuStyle * Hilight3DOff
+MenuStyle * PopupImmediately
+MenuStyle * PopdownDelay 250
+MenuStyle * TitleWarp
+MenuStyle * TrianglesSolid
+MenuStyle * VerticalItemSpacing 0 0
+MenuStyle * VerticalTitleSpacing 0 0
+MenuStyle * TitleUnderlines0
+MenuStyle * SeparatorsLong
+MenuStyle * RemoveSubmenus
+MenuStyle * PopupOffset 0 100
+MenuStyle * ItemFormat "%.4s%.1|%.5i%.5l%.5l%.5r%.5i%2.3>%1|"
+MenuStyle * AutomaticHotKeys
+MenuStyle * Hilight3DThickness 0
+MenuStyle * PopupDelayed, PopupDelay 150, PopdownDelayed, PopdownDelay 150
+MenuStyle * PopupOffset -5 100, TitleWarpOff
+MenuStyle * TitleUnderlines1, SeparatorsShort, TrianglesSolid
+MenuStyle * AnimationOff
+MenuStyle * DoubleClickTime
+MenuStyle * BorderWidth 2, SidePic, SideColor
+MenuStyle * PopupAsSubmenu, RemoveSubmenus, SubmenusRight
+MenuStyle * ItemFormat "%.4s%.1|%.5i%.5l%.5l%.5r%.5i%2.3>%1|"
+MenuStyle * VerticalItemSpacing 2 4, VerticalTitleSpacing 2 4
+#Style * NoIcon
+Style * ResizeOpaque
+Style * Colorset 1
+Style * HilightColorset 2
+Style * FirmBorder
+Style * FvwmButtons
+Style * Button 1, Button 2, Button 4, Button 6
+Style * UseDecor KyleDecor
+Style * BorderWidth 4
+Style * HandleWidth 4
+Style * MouseFocusClickRaises
+Style * MinOverlapPlacement
+Style * Font "xft:Tahoma:Bold:pixelsize=13"
+#Style * PositionPlacement UnderMouse
+Style * EdgeMoveDelay 0
+Style * EdgeMoveResistance 0
+EdgeResistance 0
+OpaqueMoveSize unlimited
+EdgeScroll 100000 100000
+EdgeThickness 1
+HideGeometryWindow Always
+###################################################
+
+
+# HELPER FUNCTIONS ################################
+DestroyFunc Move-or-Raise
+AddToFunc Move-or-Raise 
++ I Raise
++ M Focus
++ M Move
++ D Maximize 100 100
+
+DestroyFunc my_dbltab2
+AddToFunc   my_dbltab2
++ I WindowListFunc
+DestroyFunc my_dbltab_prev
+AddToFunc   my_dbltab_prev
++ I Prev my_dbltab2
+#Key Tab A M	WindowList Root c c CurrentAtEnd, NoHotkeys, NoCurrentDeskTitle, IconifiedAtEnd, NoGeometry, NoDeskSort, SelectOnRelease Alt_L my_dbltab_prev
+#Key Tab A M	WindowList Root c c CurrentAtEnd, NoHotkeys, NoCurrentDeskTitle, IconifiedAtEnd, NoGeometry, SelectOnRelease Alt_L my_dbltab_prev
+
+#Key F1 R A GotoDesk -1 0 2
+#Key F2 R A GotoDesk 1 0 2
+
+#Key Tab A M GotoDesk 1 0 2
+#alttab go to next desk
+#Key Tab A M GotoDesk 1 0 1
+
+DestroyMenu WindowOps
+AddToMenu WindowOps
++ "&Next Desk"			 MoveToDesk 1 0 1
+#+ "Minimize"		 Iconify
+#+ "M&aximize"   	 Maximize 100 100
+#+ "&Close"			 Close
+###################################################
+Style * SloppyFocus
+#Style * NoTitle
+Style xclock* Sticky,!Borders,NoTitle,WindowListSkip,StaysOnBottom,NeverFocus
+
+# APPLICATION SPECIFIC SETTINGS ###################
+Style gkrellm !Borders,NoTitle,WindowListSkip
+Style *ZSNES* !Borders,NoTitle
+Style TeXmacs !Borders,NoTitle
+Style aterm MiniIcon scalable/apps/terminal.svg:16x16
+
+
+Style MPlayer* NoTitle,!Borders
+#Style "GQview full"* !Borders,NoTitle
+###################################################
+
