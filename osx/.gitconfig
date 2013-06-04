@@ -1,0 +1,5 @@
+[user]
+	email = kgraehl@spotify.com
+	name = Kyle Graehl
+[push]
+	default = current
