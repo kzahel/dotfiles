@@ -62,7 +62,7 @@
 ;(load "~/.emacs.d/elpa-to-submit/color-theme")
 ;(load "~/.emacs.d/init")
 ;(load "~/.emacs.d/tabbar")
-(load "~/.emacs.d/go-mode")
+;(load "~/.emacs.d/go-mode") ;; loads outdated mode
 ;(load "~/.emacs.d/javascript") ;js2 mode?
 
 (autoload 'js2-mode "js2" nil t)
@@ -144,6 +144,18 @@
   (global-set-key [mouse-5] '(lambda ()
                                (interactive)
                                (scroll-up 1))))
+
+
+
+;; go mode
+(setq load-path (cons "/usr/local/go/misc/emacs" load-path))
+;;(setq load-path (cons "~/.emacs.d/go" load-path))
+(require 'go-mode-load)
+
+(defun my-go-mode-hook () 
+  (add-hook 'before-save-hook 'gofmt-before-save) 
+  (setq tab-width 4 indent-tabs-mode 1)) 
+(add-hook 'go-mode-hook 'my-go-mode-hook)
 
 
 (defvar user-temporary-file-directory
