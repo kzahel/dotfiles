@@ -1,0 +1,3 @@
+from https://code.google.com/p/chromium/issues/detail?id=209179
+
+setting solarized terminal colors

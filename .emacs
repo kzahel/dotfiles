@@ -1,6 +1,6 @@
 (set-default-font "6x13")
 ;(set-default-font "10x17")
-(tool-bar-mode -1)
+;(tool-bar-mode -1)
 (menu-bar-mode -1)
 
 (setq load-path
@@ -8,7 +8,7 @@
 		    )
 	      load-path))
 
-(load "/Users/kyle/.emacs.d/jstestmacs")
+;(load "/Users/kyle/.emacs.d/jstestmacs")
 (load "/Users/kyle/.emacs.d/popwin")
 (load "/Users/kyle/.emacs.d/markdown-mode")
 (load "/Users/kyle/.emacs.d/color-theme-blackboard")
