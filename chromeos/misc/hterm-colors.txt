@@ -1,0 +1,3 @@
+https://gist.github.com/johnbender/5018685
+
+# this wortks nicely to set blackboard color theme
