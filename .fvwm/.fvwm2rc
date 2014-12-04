@@ -1,4 +1,4 @@
-DeskTopSize 2x2
+DeskTopSize 1x1
 
 AddToFunc InitFunction
 + I Exec [ -f $HOME/.xinitrc-fvwm ] && sh $HOME/.xinitrc-fvwm
@@ -13,7 +13,7 @@ AddToMenu StartMenu
 + "%scalable2/emblems/emblem-photos.svg:60x60%Explorer" Exec exec explorer
 #+ "%googleearth.svg:60x60%Earth" Exec exec google-earth
 + "%googleearth.svg:60x60%VirtualBox" Exec exec nohup VirtualBox  &> /dev/null
-+ "%scalable/apps/terminal.svg:60x60%Terminal" Exec exec aterm
++ "%scalable/apps/terminal.svg:60x60%Terminal" Exec exec xterm
 + "%scalable/apps/terminal.svg:60x60%Rox" Exec exec rox
 + "%scalable/apps/gnome-cd.svg:60x60%KPlay" Exec exec kplay_gui
 + "%scalable/apps/emacs.svg:60x60%Emacs" Exec exec emacs
@@ -56,7 +56,7 @@ Silent Mouse 9 A M Destroy
 
 
 Stroke	0		0	R 	N 	WindowList NoHotkeys, NoGeometryWithInfo, NoDeskNum, NoNumInDeskTitle, NoCurrentDeskTitle, IconifiedAtEnd
-Stroke  N258    0	R	N	Exec exec aterm
+Stroke  N258    0	R	N	Exec exec xterm
 Stroke	N14789	0   R   N   Exec exec xterm
 Stroke  N654    0   R   N   Exec exec explorer
 Stroke  N852    0   R   N   Exec exec chromium
