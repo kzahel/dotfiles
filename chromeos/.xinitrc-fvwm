@@ -1,0 +1,3 @@
+setxkbmap dvorak
+synclient VertScrollDelta=-74
+xmodmap .Xmodmap
